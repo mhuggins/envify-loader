@@ -12,6 +12,13 @@ In the webpack module.loaders config:
 { test: /\.js$/, loader: "envify-loader" }
 ```
 
+Alternatively, the custom loader can be used by specifying a query option:
+
+```
+var config = { host: "example.com", port: 80 };
+{ test: /\.js$/, loader: "envify-loader", query: { custom: config } }
+```
+
 ### License
 
 MIT (http://www.opensource.org/licenses/mit-license.php)

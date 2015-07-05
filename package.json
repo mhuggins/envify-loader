@@ -15,7 +15,8 @@
     "envify"
   ],
   "license": "MIT",
-  "peerDependencies": {
-    "envify": "^1.2.1"
+  "dependencies": {
+    "envify": "^1.2.1",
+    "loader-utils": "^0.2.10"
   }
 }

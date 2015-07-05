@@ -1,9 +1,16 @@
-var envify = require('envify');
+var loaderUtils = require('loader-utils');
 
 module.exports = function (source) {
   var done = this.async();
-  var stream = envify();
+  var query = loaderUtils.parseQuery(this.query);
   var result = '';
+  var stream;
+
+  if (query.custom) {
+    stream = require('envify/custom')(query.custom);
+  } else {
+    stream = require('envify')();
+  }
 
   this.cacheable();
 
@@ -12,8 +19,8 @@ module.exports = function (source) {
   })
   .on('end', function () {
     done(null, result);
-  })
+  });
 
-  stream.write(source)
+  stream.write(source);
   stream.end();
 };
